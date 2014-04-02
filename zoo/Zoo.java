@@ -10,7 +10,6 @@ public class Zoo {
   int nextCage;
   int nextTag;
   int nexteId;
-  int nextvisitorId;
 
   // Map to store animals present in the zoo
   HashMap<Integer, Animal> animalTags;
@@ -23,7 +22,6 @@ public class Zoo {
     nextCage = 0;
     nextTag = 0;
     nexteId = 0;
-    nextvisitorId = 0;
     animalTags = new HashMap<Integer, Animal>();
     employeeIds = new HashMap<Integer, Employee>();
   }
@@ -36,7 +34,7 @@ public class Zoo {
 
   // Zoo specific functions
 
-  public int getNextAvailableCage(LandAnimal a) {
+  int getNextAvailableCage(LandAnimal a) {
     // Return next available cage for a particular type
     // of animal; dummy implementation shown; there can be more
     // than one animal in a cage;
@@ -44,24 +42,18 @@ public class Zoo {
     return nextCage;
   }
 
-  public int getNextAvailableTag(Animal a) {
+  int getNextAvailableTag(Animal a) {
     // Return next available tag for a particular type
     // of animal; Implementation not shown
     nextTag = nextTag + 1;
     return nextTag;
   }
 
-  public int getNextAvailableEID(Employee e) {
+  int getNextAvailableEID(Employee e) {
     // Give an employee id based on type of employee;
     // Dummy implementation
     nexteId = nexteId + 1;
     return nexteId;
-  }
-
-  public int getNextAvailableVisitorId(Visitor v) {
-    // Dummy implementation
-    nextvisitorId = nextvisitorId + 1;
-    return nextvisitorId;
   }
 
   public void addAnimal(Animal a) {
@@ -79,9 +71,6 @@ public class Zoo {
     e.eId = getNextAvailableEID(e);
     e.joiningDate = new Date();
     employeeIds.put(e.eId, e);
-  }
-
-  public void addVisitor(Visitor v) {
   }
 
   public Animal getAnimalByTag(int tag) {
@@ -103,6 +92,39 @@ public class Zoo {
           f.feedAnimal(a);
           break;
         }
+      }
+    }
+  }
+
+  public void giveTicket(Visitor v) {
+    // Look for a suitable clerk
+    for (Employee e: employeeIds.values()) {
+      if(e instanceof Clerk) {
+        Clerk c = (Clerk) e;
+        c.giveTicket(v);
+        break;
+      }
+    }
+  }
+
+  public void doExit(Visitor v) {
+    // Look for a suitable clerk
+    for (Employee e: employeeIds.values()) {
+      if(e instanceof Clerk) {
+        Clerk c = (Clerk) e;
+        c.doExit(v);
+        break;
+      }
+    }
+  }
+
+  public void giveTour(Visitor v) {
+    // Look for a suitable guide
+    for (Employee e: employeeIds.values()) {
+      if(e instanceof Guide) {
+        Guide g = (Guide) e;
+        g.giveTour(v);
+        break;
       }
     }
   }

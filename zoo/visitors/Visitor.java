@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Visitor {
   String name;
-  int visitorId;
+  int ticket;
   Date entryTime;
   Date exitTime;
 
@@ -15,6 +15,4 @@ public class Visitor {
   public Visitor(String _name) {
     name = _name;
   }
-
-  // Visitor specific functions
 };

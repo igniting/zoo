@@ -9,7 +9,7 @@ public class Guide extends Employee {
     super(_name);
   }
 
-  public void giveTour(Visitor v) {
+  void giveTour(Visitor v) {
     // Give tour of zoo to visitor
   }
 };
