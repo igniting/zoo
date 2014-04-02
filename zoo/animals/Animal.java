@@ -5,7 +5,6 @@ import java.util.Date;
 public abstract class Animal {
   // Zoo specific information to identify animal
   protected int animalTag;
-  protected int cageNo;
   protected Date entryDate;
   protected int age;
 

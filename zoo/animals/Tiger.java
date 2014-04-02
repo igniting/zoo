@@ -2,7 +2,7 @@ package zoo;
 
 import java.util.Date;
 
-public class Tiger extends Animal {
+public class Tiger extends LandAnimal {
   static final String genus = "Panthera";
   static final String species = "Tigris";
   

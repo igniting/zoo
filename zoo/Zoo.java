@@ -36,7 +36,7 @@ public class Zoo {
 
   // Zoo specific functions
 
-  public int getNextAvailableCage(Animal a) {
+  public int getNextAvailableCage(LandAnimal a) {
     // Return next available cage for a particular type
     // of animal; dummy implementation shown; there can be more
     // than one animal in a cage;
@@ -66,8 +66,11 @@ public class Zoo {
 
   public void addAnimal(Animal a) {
     a.animalTag = getNextAvailableTag(a);
-    a.cageNo = getNextAvailableCage(a);
     a.entryDate = new Date();
+    if(a instanceof LandAnimal) {
+      LandAnimal lA = (LandAnimal) a;
+      lA.cageNo = getNextAvailableCage(lA);
+    }
     // Add to the animalTags map
     animalTags.put(a.animalTag, a);
   }
